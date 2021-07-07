@@ -14,13 +14,16 @@ class EntryListVC: UIViewController {
         case collection = "list.bullet"
     }
     
+    var layoutType: LayoutType
+    
     var tableView = UITableView()
     var collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: UICollectionViewLayout())
     
     var entryNode = EntryNode(value: Entry(id: "", parentID: "", itemType: "d", itemName: "Main Folder"))
     
     // MARK: - INITIALIZERS
-    init(entryNode: EntryNode) {
+    init(entryNode: EntryNode, layoutType: LayoutType) {
+        self.layoutType = layoutType
         self.entryNode = entryNode
         super.init(nibName: nil, bundle: nil)
     }
@@ -43,8 +46,12 @@ class EntryListVC: UIViewController {
         layout.itemSize = CGSize(width: view.frame.size.width / 3.5, height: view.frame.size.width / 3.5)
         collectionView.collectionViewLayout = layout
         
-        configureTableView()
-//            configureCollectionView()
+        if layoutType == .table {
+            configureTableView()
+        } else {
+            configureCollectionView()
+        }
+        
         configureNavBarItems()
         
         

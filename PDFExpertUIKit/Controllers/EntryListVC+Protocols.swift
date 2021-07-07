@@ -24,7 +24,7 @@ extension EntryListVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if entryNode.children[indexPath.row].value.itemType == "d" {
 //            print(entryNode.value.itemType)
-            let newEntryListVC = EntryListVC(entryNode: entryNode.children[indexPath.row])
+            let newEntryListVC = EntryListVC(entryNode: entryNode.children[indexPath.row], layoutType: self.layoutType)
             self.navigationController?.pushViewController(newEntryListVC, animated: true)
             tableView.reloadData()
         }
@@ -49,7 +49,7 @@ extension EntryListVC: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if entryNode.children[indexPath.row].value.itemType == "d" {
-            let newEntryListVC = EntryListVC(entryNode: entryNode.children[indexPath.row])
+            let newEntryListVC = EntryListVC(entryNode: entryNode.children[indexPath.row], layoutType: self.layoutType)
             self.navigationController?.pushViewController(newEntryListVC, animated: true)
             collectionView.reloadData()
         }

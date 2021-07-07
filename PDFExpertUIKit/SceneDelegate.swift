@@ -18,7 +18,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
-        let navigationController = UINavigationController(rootViewController: EntryListVC(entryNode: EntryNode(value: Entry(id: "", parentID: "", itemType: "d", itemName: "Main Folder"))))
+        let navigationController = UINavigationController(rootViewController: EntryListVC(entryNode: EntryNode(value: Entry(id: "", parentID: "", itemType: "d", itemName: "Main Folder")), layoutType: .table))
         navigationController.navigationBar.prefersLargeTitles = true
         
         window = UIWindow(windowScene: windowScene)

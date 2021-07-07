@@ -12,13 +12,9 @@ import UIKit
 extension EntryListVC {
     // MARK: - NAVIGATION BAR BUTTONS
     func configureNavBarItems() {
-        let layoutButton = UIBarButtonItem(image: UIImage(systemName: activeLayout.rawValue), style: .plain, target: self, action: #selector(changeLayout))
+        let layoutButton = UIBarButtonItem(image: UIImage(systemName: layoutType.rawValue), style: .plain, target: self, action: #selector(changeLayout))
         
-        let reloadTable = UIBarButtonItem(image: UIImage(systemName: "arrow.2.squarepath"), style: .plain, target: self, action: #selector(reloadTable))
-        
-        let printChildrenButton = UIBarButtonItem(image: UIImage(systemName: "printer.fill"), style: .plain, target: self, action: #selector(printChildrenNodes))
-        
-        navigationItem.rightBarButtonItems = [layoutButton, reloadTable, printChildrenButton]
+        navigationItem.rightBarButtonItem = layoutButton
     }
     
     @objc func printChildrenNodes() {
@@ -26,7 +22,7 @@ extension EntryListVC {
     }
     
     @objc func reloadTable() {
-        if activeLayout == .table {
+        if layoutType == .table {
             tableView.reloadData()
         } else {
             collectionView.reloadData()
@@ -34,17 +30,23 @@ extension EntryListVC {
     }
     
     @objc func changeLayout() {
-        if activeLayout == .table {
+        if layoutType == .table {
+            layoutType = .collection
+            
             tableView.removeFromSuperview()
             configureCollectionView()
             
             UserDefaults.standard.setValue(false, forKey: "isTableViewActive")
         } else {
+            layoutType = .table
+            
             collectionView.removeFromSuperview()
             configureTableView()
             
             UserDefaults.standard.setValue(true, forKey: "isTableViewActive")
         }
+        
+        configureNavBarItems()
     }
     
     func configureTableView() {
