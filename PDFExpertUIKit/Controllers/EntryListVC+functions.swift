@@ -12,7 +12,7 @@ import UIKit
 extension EntryListVC {
     // MARK: - NAVIGATION BAR BUTTONS
     func configureNavBarItems() {
-        let layoutButton = UIBarButtonItem(image: UIImage(systemName: tableViewIsActive ? "square.grid.2x2.fill" : "list.bullet"), style: .plain, target: self, action: #selector(changeLayout))
+        let layoutButton = UIBarButtonItem(image: UIImage(systemName: activeLayout.rawValue), style: .plain, target: self, action: #selector(changeLayout))
         
         let reloadTable = UIBarButtonItem(image: UIImage(systemName: "arrow.2.squarepath"), style: .plain, target: self, action: #selector(reloadTable))
         
@@ -26,7 +26,7 @@ extension EntryListVC {
     }
     
     @objc func reloadTable() {
-        if tableViewIsActive {
+        if activeLayout == .table {
             tableView.reloadData()
         } else {
             collectionView.reloadData()
@@ -34,14 +34,16 @@ extension EntryListVC {
     }
     
     @objc func changeLayout() {
-        if tableViewIsActive {
-            tableView.frame = CGRect.zero
+        if activeLayout == .table {
             tableView.removeFromSuperview()
             configureCollectionView()
+            
+            UserDefaults.standard.setValue(false, forKey: "isTableViewActive")
         } else {
-            collectionView.frame = CGRect.zero
             collectionView.removeFromSuperview()
             configureTableView()
+            
+            UserDefaults.standard.setValue(true, forKey: "isTableViewActive")
         }
     }
     

@@ -9,12 +9,13 @@ import UIKit
 
 class EntryListVC: UIViewController {
     
+    enum LayoutType: String {
+        case table = "square.grid.2x2.fill"
+        case collection = "list.bullet"
+    }
+    
     var tableView = UITableView()
     var collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: UICollectionViewLayout())
-    
-    var tableViewIsActive: Bool {
-        tableView.superview == view
-    }
     
     var entryNode = EntryNode(value: Entry(id: "", parentID: "", itemType: "d", itemName: "Main Folder"))
     
@@ -37,9 +38,15 @@ class EntryListVC: UIViewController {
             fetchData()
         }
         
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        layout.itemSize = CGSize(width: view.frame.size.width / 3.5, height: view.frame.size.width / 3.5)
+        collectionView.collectionViewLayout = layout
+        
         configureTableView()
-//        configureCollectionView()
+//            configureCollectionView()
         configureNavBarItems()
+        
         
 //        view.backgroundColor = .white
         title = entryNode.value.itemName

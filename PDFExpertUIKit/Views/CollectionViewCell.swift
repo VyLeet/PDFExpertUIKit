@@ -22,8 +22,8 @@ class CollectionViewCell: UICollectionViewCell {
         configureImageView()
         configureTitleLabel()
         
-        setImageConstraints()
-        setTitleLabelConstraints()
+//        setImageConstraints()
+//        setTitleLabelConstraints()
     }
     
     required init?(coder: NSCoder) {
@@ -37,27 +37,42 @@ class CollectionViewCell: UICollectionViewCell {
     }
     
     func configureImageView() {
-        
+        entryImageView.contentMode = .scaleAspectFit
     }
     
     func configureTitleLabel() {
         entryTitleLabel.numberOfLines = 0
         entryTitleLabel.adjustsFontSizeToFitWidth = true
+        
+        entryTitleLabel.textAlignment = .center
     }
     
-    func setImageConstraints() {
-        entryImageView.translatesAutoresizingMaskIntoConstraints = false
-        entryImageView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-        entryImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12).isActive = true
-        entryImageView.heightAnchor.constraint(equalToConstant: 150).isActive = true
-        entryImageView.widthAnchor.constraint(equalToConstant: 150).isActive = true
-    }
+//    func setImageConstraints() {
+//        entryImageView.translatesAutoresizingMaskIntoConstraints = false
+//        entryImageView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+//        entryImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12).isActive = true
+//        entryImageView.heightAnchor.constraint(equalToConstant: 100).isActive = true
+//        entryImageView.widthAnchor.constraint(equalToConstant: 100).isActive = true
+//    }
+//
+//    func setTitleLabelConstraints() {
+//        entryTitleLabel.translatesAutoresizingMaskIntoConstraints = false
+//        entryTitleLabel.centerYAnchor.constraint(equalTo: entryImageView.bottomAnchor, constant: 20).isActive = true
+//        entryTitleLabel.leadingAnchor.constraint(equalTo: entryImageView.leadingAnchor).isActive = true
+//        entryTitleLabel.trailingAnchor.constraint(equalTo: entryImageView.trailingAnchor).isActive = true
+//        entryTitleLabel.heightAnchor.constraint(equalToConstant: 40).isActive = true
+//    }
     
-    func setTitleLabelConstraints() {
-        entryTitleLabel.translatesAutoresizingMaskIntoConstraints = false
-        entryTitleLabel.centerYAnchor.constraint(equalTo: entryImageView.bottomAnchor, constant: 20).isActive = true
-        entryTitleLabel.leadingAnchor.constraint(equalTo: entryImageView.leadingAnchor).isActive = true
-        entryTitleLabel.trailingAnchor.constraint(equalTo: entryImageView.trailingAnchor).isActive = true
-        entryTitleLabel.heightAnchor.constraint(equalToConstant: 40).isActive = true
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        entryTitleLabel.frame = CGRect(x: 5,
+                                       y: contentView.frame.size.height - 50,
+                                       width: contentView.frame.size.width - 10,
+                                       height: 50)
+        entryImageView.frame = CGRect(x: 5,
+                                       y: 0,
+                                       width: contentView.frame.size.width - 10,
+                                       height: contentView.frame.size.height - 50)
     }
 }

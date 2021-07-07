@@ -58,4 +58,5 @@ extension EntryListVC: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
         entryNode.children[indexPath.row].value.itemType == "d"
     }
+    
 }
