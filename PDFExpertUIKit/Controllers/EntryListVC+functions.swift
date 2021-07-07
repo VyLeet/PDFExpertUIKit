@@ -32,18 +32,16 @@ extension EntryListVC {
     @objc func changeLayout() {
         if layoutType == .table {
             layoutType = .collection
+            UserDefaults.standard.setValue(false, forKey: "isTableViewActive")
             
             tableView.removeFromSuperview()
             configureCollectionView()
-            
-            UserDefaults.standard.setValue(false, forKey: "isTableViewActive")
         } else {
             layoutType = .table
+            UserDefaults.standard.setValue(true, forKey: "isTableViewActive")
             
             collectionView.removeFromSuperview()
             configureTableView()
-            
-            UserDefaults.standard.setValue(true, forKey: "isTableViewActive")
         }
         
         configureNavBarItems()

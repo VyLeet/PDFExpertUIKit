@@ -7,12 +7,12 @@
 
 import UIKit
 
+enum LayoutType: String {
+    case table = "square.grid.2x2.fill"
+    case collection = "list.bullet"
+}
+
 class EntryListVC: UIViewController {
-    
-    enum LayoutType: String {
-        case table = "square.grid.2x2.fill"
-        case collection = "list.bullet"
-    }
     
     var layoutType: LayoutType
     
@@ -55,8 +55,14 @@ class EntryListVC: UIViewController {
         configureNavBarItems()
         
         
-//        view.backgroundColor = .white
         title = entryNode.value.itemName
         navigationController?.navigationBar.prefersLargeTitles = true
     }
+    
+//    override func viewWillAppear(_ animated: Bool) {
+//        if layoutType != (UserDefaults.standard.bool(forKey: "isTableViewActive") ? .table : .collection) {
+//            changeLayout()
+//            print("Layout changed")
+//        }
+//    }
 }
