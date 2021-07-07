@@ -18,6 +18,7 @@
 		F6A61DF0269491D400BEB212 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A61DEF269491D400BEB212 /* TableViewCell.swift */; };
 		F6A61DF42694CEF700BEB212 /* EntryListVC+functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A61DF32694CEF700BEB212 /* EntryListVC+functions.swift */; };
 		F6A61DF62695832400BEB212 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A61DF52695832400BEB212 /* CollectionViewCell.swift */; };
+		F6A61DF82695B77200BEB212 /* DummyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A61DF72695B77200BEB212 /* DummyCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		F6A61DEF269491D400BEB212 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		F6A61DF32694CEF700BEB212 /* EntryListVC+functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EntryListVC+functions.swift"; sourceTree = "<group>"; };
 		F6A61DF52695832400BEB212 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+		F6A61DF72695B77200BEB212 /* DummyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 			children = (
 				F6A61DEF269491D400BEB212 /* TableViewCell.swift */,
 				F6A61DF52695832400BEB212 /* CollectionViewCell.swift */,
+				F6A61DF72695B77200BEB212 /* DummyCollectionViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -182,6 +185,7 @@
 				F60F0851268EDF8E00E2876A /* AppDelegate.swift in Sources */,
 				F60F0853268EDF8E00E2876A /* SceneDelegate.swift in Sources */,
 				F6A61DF42694CEF700BEB212 /* EntryListVC+functions.swift in Sources */,
+				F6A61DF82695B77200BEB212 /* DummyCollectionViewCell.swift in Sources */,
 				F60F0869268EE66D00E2876A /* EntryListVC.swift in Sources */,
 				F6A61DEE2694911B00BEB212 /* EntryListVC+Protocols.swift in Sources */,
 			);

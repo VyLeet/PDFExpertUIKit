@@ -62,6 +62,7 @@ extension EntryListVC {
     
     func configureCollectionView() {
         collectionView.frame = view.bounds
+        collectionView.backgroundColor = .white
         
         view.addSubview(collectionView)
         setCollectionViewDelegates()

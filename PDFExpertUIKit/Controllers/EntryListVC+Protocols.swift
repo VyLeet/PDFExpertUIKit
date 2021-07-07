@@ -22,9 +22,16 @@ extension EntryListVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let newEntryListVC = EntryListVC(entryNode: entryNode.children[indexPath.row])
-        self.navigationController?.pushViewController(newEntryListVC, animated: true)
-        tableView.reloadData()
+        if entryNode.children[indexPath.row].value.itemType == "d" {
+//            print(entryNode.value.itemType)
+            let newEntryListVC = EntryListVC(entryNode: entryNode.children[indexPath.row])
+            self.navigationController?.pushViewController(newEntryListVC, animated: true)
+            tableView.reloadData()
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
+        entryNode.children[indexPath.row].value.itemType == "d"
     }
 }
 
@@ -41,8 +48,14 @@ extension EntryListVC: UICollectionViewDelegate, UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let newEntryListVC = EntryListVC(entryNode: entryNode.children[indexPath.row])
-        self.navigationController?.pushViewController(newEntryListVC, animated: true)
-        collectionView.reloadData()
+        if entryNode.children[indexPath.row].value.itemType == "d" {
+            let newEntryListVC = EntryListVC(entryNode: entryNode.children[indexPath.row])
+            self.navigationController?.pushViewController(newEntryListVC, animated: true)
+            collectionView.reloadData()
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
+        entryNode.children[indexPath.row].value.itemType == "d"
     }
 }

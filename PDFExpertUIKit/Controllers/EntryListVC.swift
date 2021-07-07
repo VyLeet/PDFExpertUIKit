@@ -41,7 +41,7 @@ class EntryListVC: UIViewController {
 //        configureCollectionView()
         configureNavBarItems()
         
-        view.backgroundColor = .white
+//        view.backgroundColor = .white
         title = entryNode.value.itemName
         navigationController?.navigationBar.prefersLargeTitles = true
     }
