@@ -1,0 +1,6 @@
+framework module Pods_PDFExpertUIKit {
+  umbrella header "Pods-PDFExpertUIKit-umbrella.h"
+
+  export *
+  module * { export * }
+}
