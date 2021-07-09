@@ -45,8 +45,6 @@ class EntryListVC: UIViewController {
         if entryNode.value.itemName == "Main Folder" {
             let dataFetcher = DataFetcher()
             entryNode = dataFetcher.getFileTree()
-            
-            dataFetcher.readSheet()
         }
         
         layout.scrollDirection = .vertical
