@@ -1,8 +1,8 @@
 PODS:
-  - GoogleAPIClientForREST (1.5.2):
-    - GoogleAPIClientForREST/Core (= 1.5.2)
+  - GoogleAPIClientForREST/Core (1.2.1):
     - GTMSessionFetcher (>= 1.1.7)
-  - GoogleAPIClientForREST/Core (1.5.2):
+  - GoogleAPIClientForREST/Sheets (1.2.1):
+    - GoogleAPIClientForREST/Core
     - GTMSessionFetcher (>= 1.1.7)
   - GTMSessionFetcher (1.6.1):
     - GTMSessionFetcher/Full (= 1.6.1)
@@ -11,7 +11,7 @@ PODS:
     - GTMSessionFetcher/Core (= 1.6.1)
 
 DEPENDENCIES:
-  - GoogleAPIClientForREST (~> 1.5)
+  - GoogleAPIClientForREST/Sheets (~> 1.2.1)
 
 SPEC REPOS:
   trunk:
@@ -19,9 +19,9 @@ SPEC REPOS:
     - GTMSessionFetcher
 
 SPEC CHECKSUMS:
-  GoogleAPIClientForREST: 538a8ad0014fd88b78894e77100775a6b0a4f7ed
+  GoogleAPIClientForREST: a8b95a252014ce2e618df6b75dc72eca2c00b4af
   GTMSessionFetcher: 36689134877faeb055b27dfa4ccc9ceaa42e029e
 
-PODFILE CHECKSUM: d72f037a6e66d9a76e2d92dbdd6c49bac34932f9
+PODFILE CHECKSUM: 0175314e707e44adf75ff0ab147deb6b3de0cc94
 
 COCOAPODS: 1.10.1

@@ -5,6 +5,6 @@ target 'PDFExpertUIKit' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
 
-  pod 'GoogleAPIClientForREST', '~> 1.5'
+  pod 'GoogleAPIClientForREST/Sheets', '~> 1.2.1'
 
 end

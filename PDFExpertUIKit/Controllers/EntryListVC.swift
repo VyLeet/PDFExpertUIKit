@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import GTMSessionFetcher
 
 enum LayoutType: String {
     case table = "square.grid.2x2.fill"
@@ -16,10 +17,15 @@ class EntryListVC: UIViewController {
     
     var layoutType: LayoutType
     
-    var tableView = UITableView()
-    var collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: UICollectionViewLayout())
+    lazy var tableView = UITableView()
+    let layout = UICollectionViewFlowLayout()
+    lazy var collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
     
-    var entryNode = EntryNode(value: Entry(id: "", parentID: "", itemType: "d", itemName: "Main Folder"))
+    var entryNode = EntryNode(value: Entry(id: "", parentID: "", itemType: "d", itemName: "Main Folder")) {
+        didSet {
+            tableView.reloadData()
+        }
+    }
     
     // MARK: - INITIALIZERS
     init(entryNode: EntryNode, layoutType: LayoutType) {
@@ -37,14 +43,17 @@ class EntryListVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         if entryNode.value.itemName == "Main Folder" {
-            print("Fetching data")
-            fetchData()
+            let dataFetcher = DataFetcher()
+            entryNode = dataFetcher.getFileTree()
+            
+            dataFetcher.readSheet()
         }
         
-        let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
-        layout.itemSize = CGSize(width: view.frame.size.width / 3.5, height: view.frame.size.width / 3.5)
-        collectionView.collectionViewLayout = layout
+        layout.itemSize = CGSize(width: 100, height: 100)
+        
+        setTableViewDelegates()
+        setCollectionViewDelegates()
         
         if layoutType == .table {
             configureTableView()
@@ -58,11 +67,4 @@ class EntryListVC: UIViewController {
         title = entryNode.value.itemName
         navigationController?.navigationBar.prefersLargeTitles = true
     }
-    
-//    override func viewWillAppear(_ animated: Bool) {
-//        if layoutType != (UserDefaults.standard.bool(forKey: "isTableViewActive") ? .table : .collection) {
-//            changeLayout()
-//            print("Layout changed")
-//        }
-//    }
 }

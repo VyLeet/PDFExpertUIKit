@@ -18,6 +18,7 @@
 
 #import <Foundation/Foundation.h>
 
+#import "GTLRDefines.h"
 #import "GTLRBatchQuery.h"
 #import "GTLRBatchResult.h"
 #import "GTLRDateTime.h"
@@ -26,16 +27,24 @@
 #import "GTLRObject.h"
 #import "GTLRQuery.h"
 
-@class GTMSessionFetcher;
-@class GTMSessionFetcherService;
-@protocol GTMFetcherAuthorizationProtocol;
+#if !defined(GTLR_USE_FRAMEWORK_IMPORTS)
+  #define GTLR_USE_FRAMEWORK_IMPORTS 0
+#endif
+
+#if GTLR_USE_FRAMEWORK_IMPORTS
+  #import <GTMSessionFetcher/GTMSessionFetcher.h>
+  #import <GTMSessionFetcher/GTMSessionFetcherService.h>
+#else
+  #import "GTMSessionFetcher.h"
+  #import "GTMSessionFetcherService.h"
+#endif  // GTLR_USE_FRAMEWORK_IMPORTS
 
 NS_ASSUME_NONNULL_BEGIN
 
 /**
  *  The domain used used for NSErrors created by GTLRService query execution.
  */
-FOUNDATION_EXTERN NSString *const kGTLRServiceErrorDomain;
+extern NSString *const kGTLRServiceErrorDomain;
 
 typedef NS_ENUM(NSInteger, GTLRServiceError) {
   GTLRServiceErrorQueryResultMissing      = -3000,
@@ -46,24 +55,24 @@ typedef NS_ENUM(NSInteger, GTLRServiceError) {
 /**
  *  The kGTLRServiceErrorDomain userInfo key for the server response body.
  */
-FOUNDATION_EXTERN NSString *const kGTLRServiceErrorBodyDataKey;
+extern NSString *const kGTLRServiceErrorBodyDataKey;
 
 /**
  *  The kGTLRServiceErrorDomain userInfo key for the response content ID, if appropriate.
  */
-FOUNDATION_EXTERN NSString *const kGTLRServiceErrorContentIDKey;
+extern NSString *const kGTLRServiceErrorContentIDKey;
 
 /**
  *  The domain used for foundation errors created from GTLRErrorObjects that
  *  were not originally foundation errors.
  */
-FOUNDATION_EXTERN NSString *const kGTLRErrorObjectDomain;
+extern NSString *const kGTLRErrorObjectDomain;
 
 /**
  *  The userInfo key for a GTLRErrorObject for errors with domain kGTLRErrorObjectDomain
  *  when the error was created from a structured JSON error response body.
  */
-FOUNDATION_EXTERN NSString *const kGTLRStructuredErrorKey;
+extern NSString *const kGTLRStructuredErrorKey;
 
 /**
  *  A constant ETag for when updating or deleting a single entry, telling
@@ -71,7 +80,7 @@ FOUNDATION_EXTERN NSString *const kGTLRStructuredErrorKey;
  *
  *  Do not use this in entries in a batch feed.
  */
-FOUNDATION_EXTERN NSString *const kGTLRETagWildcard;
+extern NSString *const kGTLRETagWildcard;
 
 /**
  *  Notification of a ticket starting.  The notification object is the ticket.
@@ -79,32 +88,25 @@ FOUNDATION_EXTERN NSString *const kGTLRETagWildcard;
  *
  *  Use the stopped notification to log all requests made by the library.
  */
-FOUNDATION_EXTERN NSString *const kGTLRServiceTicketStartedNotification;
+extern NSString *const kGTLRServiceTicketStartedNotification;
 
 /**
  *  Notification of a ticket stopping.  The notification object is the ticket.
  *  This is posted on the main thread.
  */
-FOUNDATION_EXTERN NSString *const kGTLRServiceTicketStoppedNotification;
+extern NSString *const kGTLRServiceTicketStoppedNotification;
 
 /**
  *  Notifications when parsing of a server response or entry begins.
  *  This is posted on the main thread.
  */
-FOUNDATION_EXTERN NSString *const kGTLRServiceTicketParsingStartedNotification;
+extern NSString *const kGTLRServiceTicketParsingStartedNotification;
 
 /**
  *  Notifications when parsing of a server response or entry ends.
  *  This is posted on the main thread.
  */
-FOUNDATION_EXTERN NSString *const kGTLRServiceTicketParsingStoppedNotification;
-
-/**
- *  The header name used to send an Application's Bundle Identifier.
- *  For more information on adding API restrictions see the docs:
- *    https://cloud.google.com/docs/authentication/api-keys#api_key_restrictions
- */
-FOUNDATION_EXTERN NSString *const kXIosBundleIdHeader;
+extern NSString *const kGTLRServiceTicketParsingStoppedNotification;
 
 @class GTLRServiceTicket;
 
@@ -270,27 +272,8 @@ typedef void (^GTLRServiceTestBlock)(GTLRServiceTicket *testTicket,
 
 /**
  *  Some services require a developer key for quotas and limits.
- *
- *  If you have enabled the iOS API Key Restriction, you will want
- *  to manually set the @c APIKeyRestrictionBundleID property, or
- *  use -setMainBundleIDRestrictionWithAPIKey: to set your API key
- *  and set the restriction to the main bundle's bundle id.
  */
 @property(nonatomic, copy, nullable) NSString *APIKey;
-
-/**
- *  The Bundle Identifier to use for the API key restriction. This will be
- *  sent in an X-Ios-Bundle-Identifier header; for more information see
- *  the API key documentation
- *    https://cloud.google.com/docs/authentication/api-keys#api_key_restrictions
- */
-@property(nonatomic, copy, nullable) NSString *APIKeyRestrictionBundleID;
-
-/**
- *  Helper method to set the @c APIKey to the given value and set the
- *  @c APIKeyRestrictionBundleID to the main bundle's bundle identifier.
- */
-- (void)setMainBundleIDRestrictionWithAPIKey:(NSString *)apiKey;
 
 /**
  *  An authorizer adds user authentication headers to the request as needed.
@@ -447,14 +430,12 @@ typedef void (^GTLRServiceTestBlock)(GTLRServiceTicket *testTicket,
 #pragma mark Custom User Agents
 
 /**
- *  Applications needing an additional identifier in the server logs may specify one
- *  through this property and it will be added to the existing UserAgent. It should
- *  already be a valid identifier as no cleaning/validation is done.
+ *  Applications needing an additional identifier in the server logs may specify one.
  */
 @property(nonatomic, copy, nullable) NSString *userAgentAddition;
 
 /**
- *  A base user-agent based on the application signature in the Info.plist settings.
+ *  A user-agent based on the application signature in the Info.plist settings.
  *
  *  Most applications should not explicitly set this property.  Any string provided will
  *  be cleaned of inappropriate characters.
@@ -468,21 +449,12 @@ typedef void (^GTLRServiceTestBlock)(GTLRServiceTicket *testTicket,
 @property(nonatomic, readonly, nullable) NSString *requestUserAgent;
 
 /**
- *  A precise base userAgent string identifying the application.  No cleaning of characters
- *  is done. Library-specific details will be appended.
+ *  A precise userAgent string identifying the application.  No cleaning of characters is done.
+ *  Library-specific details will be appended.
  *
- *  @param userAgent A wire-ready user agent string.
+ *  @param userAgent A wire-ready use agent string.
  */
 - (void)setExactUserAgent:(nullable NSString *)userAgent;
-
-/**
- *  A precise userAgent string to send on requests; no cleaning is done. When
- *  set, requestUserAgent will be exactly this, no library or system information
- *  will be auto added.
- *
- *  @param requestUserAgent A wire-ready user agent string.
- */
-- (void)overrideRequestUserAgent:(nullable NSString *)requestUserAgent;
 
 /**
  *  Any additional URL query parameters for the queries executed by this service.
@@ -575,13 +547,12 @@ typedef void (^GTLRServiceTestBlock)(GTLRServiceTicket *testTicket,
 
 /**
  *  If this service supports pretty printing the JSON on the wire, these are
- *  the names of the query params that enable it. If there are any values,
- *  the library disables pretty printing to save on bandwidth.
+ *  the names of the query params that enable it. The library disables
+ *  pretty printing to save on bandwidth.
  *
- *  Applications should typically not need change this; the ServiceGenerator
- *  will set this up when generating the custom subclass.
+ *  Applications should typically not change this.
  */
-@property(nonatomic, strong, nullable) NSArray<NSString *> *prettyPrintQueryParameterNames;
+@property(nonatomic, strong) NSArray<NSString *> *prettyPrintQueryParameterNames;
 
 /**
  *  This indicates if the API requires a "data" JSON element to wrap the payload
@@ -610,7 +581,7 @@ typedef void (^GTLRServiceTestBlock)(GTLRServiceTicket *testTicket,
  *
  *  Example usage is in the unit test method @c testService_MockService_Succeeding
  *
- *  @param object An object derived from GTLRObject to be passed to query completion handlers.
+ *  @param objectOrNil An object derived from GTLRObject to be passed to query completion handlers.
  *  @param error       An error to be passed to query completion handlers.
  *
  *  @return A mock instance of the service, suitable for unit testing.
@@ -656,7 +627,7 @@ typedef void (^GTLRServiceTestBlock)(GTLRServiceTicket *testTicket,
  *
  *  A BOOL value should be specified.
  */
-@property(atomic, strong, nullable) NSNumber *shouldFetchNextPages;
+@property(atomic) NSNumber *shouldFetchNextPages;
 
 /**
  *  Override the service's property @c shouldFetchNextPages for enabling automatic retries.
@@ -665,7 +636,7 @@ typedef void (^GTLRServiceTestBlock)(GTLRServiceTicket *testTicket,
  *
  *  Retry is also enabled if the retryBlock is not nil
  */
-@property(atomic, strong, nullable, getter=isRetryEnabled) NSNumber *retryEnabled;
+@property(atomic, getter=isRetryEnabled) NSNumber *retryEnabled;
 
 /**
  *  Override the service's property @c retryBlock for customizing automatic retries.
@@ -677,7 +648,7 @@ typedef void (^GTLRServiceTestBlock)(GTLRServiceTicket *testTicket,
  *
  *  A NSTimeInterval (double) value should be specified.
  */
-@property(atomic, strong, nullable) NSNumber *maxRetryInterval;
+@property(atomic) NSNumber *maxRetryInterval;
 
 /**
  *  Override the service's property @c uploadProgressBlock for monitoring upload progress.
@@ -699,7 +670,7 @@ typedef void (^GTLRServiceTestBlock)(GTLRServiceTicket *testTicket,
 /**
  *  Override the service's property @c objectClassResolver for controlling object class selection.
  */
-@property(atomic, strong, nullable) id<GTLRObjectClassResolver> objectClassResolver;
+@property(atomic, strong) id<GTLRObjectClassResolver> objectClassResolver;
 
 /**
  *  The ticket's properties are the service properties, with the execution parameter's
@@ -777,11 +748,6 @@ typedef void (^GTLRServiceTestBlock)(GTLRServiceTicket *testTicket,
  *  The API key used for the query requeat.
  */
 @property(atomic, readonly, nullable) NSString *APIKey;
-
-/**
- *  The Bundle Identifier to use for the API key restriciton.
- */
-@property(atomic, readonly, nullable) NSString *APIKeyRestrictionBundleID;
 
 #pragma mark Status
 

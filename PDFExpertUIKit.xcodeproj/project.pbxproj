@@ -3,11 +3,10 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D7BE9EA15EF03EFF8D9CABCA /* Pods_PDFExpertUIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA5C4E11B1358978463C0605 /* Pods_PDFExpertUIKit.framework */; };
 		F60F0851268EDF8E00E2876A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60F0850268EDF8E00E2876A /* AppDelegate.swift */; };
 		F60F0853268EDF8E00E2876A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60F0852268EDF8E00E2876A /* SceneDelegate.swift */; };
 		F60F085A268EDF9000E2876A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F60F0859268EDF9000E2876A /* Assets.xcassets */; };
@@ -15,17 +14,19 @@
 		F60F0869268EE66D00E2876A /* EntryListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60F0868268EE66D00E2876A /* EntryListVC.swift */; };
 		F60F086B268EE9EC00E2876A /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60F086A268EE9EC00E2876A /* Entry.swift */; };
 		F60F086E268EEA1400E2876A /* EntryTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60F086D268EEA1400E2876A /* EntryTree.swift */; };
+		F67D5165269710160009E2D3 /* DataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67D5164269710160009E2D3 /* DataFetcher.swift */; };
 		F6A61DEE2694911B00BEB212 /* EntryListVC+Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A61DED2694911B00BEB212 /* EntryListVC+Protocols.swift */; };
 		F6A61DF0269491D400BEB212 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A61DEF269491D400BEB212 /* TableViewCell.swift */; };
 		F6A61DF42694CEF700BEB212 /* EntryListVC+functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A61DF32694CEF700BEB212 /* EntryListVC+functions.swift */; };
 		F6A61DF62695832400BEB212 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A61DF52695832400BEB212 /* CollectionViewCell.swift */; };
 		F6A61DF82695B77200BEB212 /* DummyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A61DF72695B77200BEB212 /* DummyCollectionViewCell.swift */; };
+		FB82174FF3DD3911C0624F66 /* Pods_PDFExpertUIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699DE855EC15B8DB64AFDC5E /* Pods_PDFExpertUIKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		4EF689939DFFC43DB1A30A2B /* Pods-PDFExpertUIKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PDFExpertUIKit.debug.xcconfig"; path = "Target Support Files/Pods-PDFExpertUIKit/Pods-PDFExpertUIKit.debug.xcconfig"; sourceTree = "<group>"; };
-		AA5C4E11B1358978463C0605 /* Pods_PDFExpertUIKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PDFExpertUIKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C51948C7B4008BE75E8F355B /* Pods-PDFExpertUIKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PDFExpertUIKit.release.xcconfig"; path = "Target Support Files/Pods-PDFExpertUIKit/Pods-PDFExpertUIKit.release.xcconfig"; sourceTree = "<group>"; };
+		5F314FBC873E18673733CB3F /* Pods-PDFExpertUIKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PDFExpertUIKit.release.xcconfig"; path = "Target Support Files/Pods-PDFExpertUIKit/Pods-PDFExpertUIKit.release.xcconfig"; sourceTree = "<group>"; };
+		6739A3B9D5145D383B8A9544 /* Pods-PDFExpertUIKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PDFExpertUIKit.debug.xcconfig"; path = "Target Support Files/Pods-PDFExpertUIKit/Pods-PDFExpertUIKit.debug.xcconfig"; sourceTree = "<group>"; };
+		699DE855EC15B8DB64AFDC5E /* Pods_PDFExpertUIKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PDFExpertUIKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F60F084D268EDF8E00E2876A /* PDFExpertUIKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PDFExpertUIKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F60F0850268EDF8E00E2876A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F60F0852268EDF8E00E2876A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -35,6 +36,7 @@
 		F60F0868268EE66D00E2876A /* EntryListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryListVC.swift; sourceTree = "<group>"; };
 		F60F086A268EE9EC00E2876A /* Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
 		F60F086D268EEA1400E2876A /* EntryTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryTree.swift; sourceTree = "<group>"; };
+		F67D5164269710160009E2D3 /* DataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFetcher.swift; sourceTree = "<group>"; };
 		F6A61DED2694911B00BEB212 /* EntryListVC+Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EntryListVC+Protocols.swift"; sourceTree = "<group>"; };
 		F6A61DEF269491D400BEB212 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		F6A61DF32694CEF700BEB212 /* EntryListVC+functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EntryListVC+functions.swift"; sourceTree = "<group>"; };
@@ -47,27 +49,26 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D7BE9EA15EF03EFF8D9CABCA /* Pods_PDFExpertUIKit.framework in Frameworks */,
+				FB82174FF3DD3911C0624F66 /* Pods_PDFExpertUIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		B712C1585BD18FB9DC41BDFC /* Pods */ = {
+		7F5A3DAC2E59BE8B560067A8 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				4EF689939DFFC43DB1A30A2B /* Pods-PDFExpertUIKit.debug.xcconfig */,
-				C51948C7B4008BE75E8F355B /* Pods-PDFExpertUIKit.release.xcconfig */,
+				6739A3B9D5145D383B8A9544 /* Pods-PDFExpertUIKit.debug.xcconfig */,
+				5F314FBC873E18673733CB3F /* Pods-PDFExpertUIKit.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		BC1BDB41546A660F317DA03E /* Frameworks */ = {
+		B186A64682EA28300A6D968D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				AA5C4E11B1358978463C0605 /* Pods_PDFExpertUIKit.framework */,
+				699DE855EC15B8DB64AFDC5E /* Pods_PDFExpertUIKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -77,8 +78,8 @@
 			children = (
 				F60F084F268EDF8E00E2876A /* PDFExpertUIKit */,
 				F60F084E268EDF8E00E2876A /* Products */,
-				B712C1585BD18FB9DC41BDFC /* Pods */,
-				BC1BDB41546A660F317DA03E /* Frameworks */,
+				7F5A3DAC2E59BE8B560067A8 /* Pods */,
+				B186A64682EA28300A6D968D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -95,6 +96,7 @@
 			children = (
 				F60F0850268EDF8E00E2876A /* AppDelegate.swift */,
 				F60F0852268EDF8E00E2876A /* SceneDelegate.swift */,
+				F67D5164269710160009E2D3 /* DataFetcher.swift */,
 				F6A61DF22694CEA900BEB212 /* Views */,
 				F60F086C268EE9FC00E2876A /* Controllers */,
 				F60F086F268EEA2000E2876A /* Model */,
@@ -248,6 +250,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F6A61DF62695832400BEB212 /* CollectionViewCell.swift in Sources */,
+				F67D5165269710160009E2D3 /* DataFetcher.swift in Sources */,
 				F60F086E268EEA1400E2876A /* EntryTree.swift in Sources */,
 				F60F086B268EE9EC00E2876A /* Entry.swift in Sources */,
 				F6A61DF0269491D400BEB212 /* TableViewCell.swift in Sources */,
@@ -392,7 +395,7 @@
 		};
 		F60F0862268EDF9000E2876A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4EF689939DFFC43DB1A30A2B /* Pods-PDFExpertUIKit.debug.xcconfig */;
+			baseConfigurationReference = 6739A3B9D5145D383B8A9544 /* Pods-PDFExpertUIKit.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -412,7 +415,7 @@
 		};
 		F60F0863268EDF9000E2876A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C51948C7B4008BE75E8F355B /* Pods-PDFExpertUIKit.release.xcconfig */;
+			baseConfigurationReference = 5F314FBC873E18673733CB3F /* Pods-PDFExpertUIKit.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

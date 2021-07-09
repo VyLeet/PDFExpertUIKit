@@ -25,6 +25,10 @@
 #import "GTLRFramework.h"
 #import "GTLRURITemplate.h"
 #import "GTLRUtilities.h"
+#import "GTLRSheets.h"
+#import "GTLRSheetsObjects.h"
+#import "GTLRSheetsQuery.h"
+#import "GTLRSheetsService.h"
 
 FOUNDATION_EXPORT double GoogleAPIClientForRESTVersionNumber;
 FOUNDATION_EXPORT const unsigned char GoogleAPIClientForRESTVersionString[];
